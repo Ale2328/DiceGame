@@ -162,19 +162,19 @@ public class MyPanel extends JPanel{
         if (random_num_c > random_num_p){
             sum_c+=1;
             win_text.setText(giocatore2.getText() + " Won!");
-            System.out.println("C win");
+            //System.out.println("C win");
 
         }
         else if(random_num_c < random_num_p){
             sum_p+=1;
             win_text.setText(giocatore1.getText() + " Won!");
-            System.out.println("P win");
+            //System.out.println("P win");
 
         }
         else{
             win_text.setText("       Draw!");
 
-            System.out.println("Pari");
+            //System.out.println("Pari");
         }
         
     }
