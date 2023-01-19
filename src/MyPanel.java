@@ -12,14 +12,14 @@ import javax.swing.ImageIcon;
 
 
 public class MyPanel extends JPanel{
-    private JButton l_btn = new JButton("Lancia");
-    private JButton a_btn = new JButton("Azzera");
+    private JButton l_btn = new JButton("Roll");
+    private JButton a_btn = new JButton("Reset");
 
     private JLabel title = new JLabel("Dice Game !");
     private JLabel vs = new JLabel("VS");
 
-    private JTextField textField1 = new JTextField("Punti: 0");
-    private JTextField textField2 = new JTextField("Punti: 0");
+    private JTextField textField1 = new JTextField("Score: 0");
+    private JTextField textField2 = new JTextField("Score: 0");
     
     private JTextArea giocatore1 = new JTextArea("Player1");
     private JTextArea giocatore2 = new JTextArea("Player2");
@@ -73,6 +73,7 @@ public class MyPanel extends JPanel{
 
         a_btn.setBounds(205, 380, ELEMENT_WIDTH, ELEMENT_HEIGHT);
         l_btn.setBounds(205, 360, ELEMENT_WIDTH, ELEMENT_HEIGHT);
+
 
         a_btn.addActionListener(evt -> resetGame());
         l_btn.addActionListener(e -> lancio());
@@ -148,6 +149,7 @@ public class MyPanel extends JPanel{
         random_num_p = r.nextInt(1,6);
         random_num_c = r.nextInt(1,6);
         this.win();
+
         textField2.setText("Punti: "+sum_p);
         image_icon_p = getNewImage(random_num_p);
         this.setupImage();
@@ -161,19 +163,19 @@ public class MyPanel extends JPanel{
         if (random_num_c > random_num_p){
             sum_c+=1;
             win_text.setText(giocatore2.getText() + " Won!");
-            System.out.println("C win");
+            //System.out.println("C win");
 
         }
         else if(random_num_c < random_num_p){
             sum_p+=1;
             win_text.setText(giocatore1.getText() + " Won!");
-            System.out.println("P win");
+            //System.out.println("P win");
 
         }
         else{
             win_text.setText("       Draw!");
 
-            System.out.println("Pari");
+            //System.out.println("Pari");
         }
         
     }
