@@ -24,18 +24,18 @@ public class MyPanel extends JPanel{
     private JTextArea giocatore1 = new JTextArea("Player1");
     private JTextArea giocatore2 = new JTextArea("Player2");
     
-    private Font font = new Font("Broadway", Font.PLAIN, 15);
-    private Font font_label = new Font("Broadway", Font.PLAIN, 15);
-    private Font font_title = new Font("Broadway", Font.PLAIN, 70);
-    private Font font_vs = new Font("Broadway", Font.PLAIN, 50);
+    private final Font font = new Font("Broadway", Font.PLAIN, 15);
+    private final Font font_label = new Font("Broadway", Font.PLAIN, 15);
+    private final Font font_title = new Font("Broadway", Font.PLAIN, 70);
+    private final Font font_vs = new Font("Broadway", Font.PLAIN, 50);
     
 
     private JLabel win_text = new JLabel();
     private JLabel p_dice = new JLabel();
     private JLabel c_dice = new JLabel();
 
-    private ImageIcon image_icon_p = getNewImageP(1);
-    private ImageIcon image_icon_c = getNewImageC(1);
+    private ImageIcon image_icon_p = getNewImage(1);
+    private ImageIcon image_icon_c = getNewImage(1);
 
     private int random_num_p = 0;
     private int random_num_c = 0;
@@ -74,14 +74,17 @@ public class MyPanel extends JPanel{
         a_btn.setBounds(205, 380, ELEMENT_WIDTH, ELEMENT_HEIGHT);
         l_btn.setBounds(205, 360, ELEMENT_WIDTH, ELEMENT_HEIGHT);
 
-        a_btn.addActionListener(evt -> {
-            textField1.setText("Score: 0");
-            textField2.setText("Score: 0");
-            sum_p = 0;
-            sum_c = 0;
-            win_text.setText("");
-        });
+
+        a_btn.addActionListener(evt -> resetGame());
         l_btn.addActionListener(e -> lancio());
+    }
+
+    private void resetGame() {
+        textField1.setText("Punti: 0");
+        textField2.setText("Punti: 0");
+        sum_p = 0;
+        sum_c = 0;
+        win_text.setText("");
     }
 
     private void setupTextFields() {
@@ -126,11 +129,7 @@ public class MyPanel extends JPanel{
 
     }
 
-    private ImageIcon getNewImageP(int points) {
-        java.net.URL imageUrl = this.getClass().getResource("./assets/" + points +".png");
-        return new ImageIcon(imageUrl);
-    }
-    private ImageIcon getNewImageC(int points) {
+    private ImageIcon getNewImage(int points) {
         java.net.URL imageUrl = this.getClass().getResource("./assets/" + points +".png");
         return new ImageIcon(imageUrl);
     }
@@ -145,16 +144,18 @@ public class MyPanel extends JPanel{
         this.add(c_dice);
         this.add(p_dice);
     }
+    
     public void lancio(){
         random_num_p = r.nextInt(1,6);
         random_num_c = r.nextInt(1,6);
         this.win();
-        textField2.setText("Score: "+sum_p);
-        image_icon_p = getNewImageP(random_num_p);
+
+        textField2.setText("Punti: "+sum_p);
+        image_icon_p = getNewImage(random_num_p);
         this.setupImage();
 
-        textField1.setText("Score: "+sum_c);
-        image_icon_c = getNewImageC(random_num_c);
+        textField1.setText("Punti: "+sum_c);
+        image_icon_c = getNewImage(random_num_c);
         this.setupImage();
     }
 
