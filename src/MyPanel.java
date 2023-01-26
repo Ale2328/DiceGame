@@ -80,8 +80,8 @@ public class MyPanel extends JPanel{
     }
 
     private void resetGame() {
-        textField1.setText("Punti: 0");
-        textField2.setText("Punti: 0");
+        textField1.setText("Score: 0");
+        textField2.setText("Score: 0");
         sum_p = 0;
         sum_c = 0;
         win_text.setText("");
@@ -150,11 +150,11 @@ public class MyPanel extends JPanel{
         random_num_c = r.nextInt(1,6);
         this.win();
 
-        textField2.setText("Punti: "+sum_p);
+        textField2.setText("Score: "+sum_p);
         image_icon_p = getNewImage(random_num_p);
         this.setupImage();
 
-        textField1.setText("Punti: "+sum_c);
+        textField1.setText("Score: "+sum_c);
         image_icon_c = getNewImage(random_num_c);
         this.setupImage();
     }
