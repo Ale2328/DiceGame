@@ -84,6 +84,7 @@ public class MyPanel extends JPanel{
         textField2.setText("Score: 0");
         sum_p = 0;
         sum_c = 0;
+
         win_text.setText("");
     }
 
